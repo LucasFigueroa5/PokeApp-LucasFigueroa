@@ -1,12 +1,29 @@
-import React from 'react'
-import './Navbar.css'
+import React from "react";
+import "./Navbar.css";
+import pokeball from "../../utils/images/pokeball.png";
+import {Link} from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div className='navContainer'>
-        <h1 className="title">Nav</h1>
+    <div className="navContainer">
+      <img src={pokeball} alt="pokeball" />
+      <div className="btnsContainer">
+        <div className="navBtnsContainer">
+          <Link to='/home'>
+            <button className="btnNav">Home</button>
+          </Link>
+          <Link to='/create'>
+            <button className="btnNav">Create Pokemon</button>
+          </Link>
+        </div>
+        <div className="logoutBtn">
+          <Link to='/'>
+            <button className="btnNav">Logout</button>
+          </Link>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

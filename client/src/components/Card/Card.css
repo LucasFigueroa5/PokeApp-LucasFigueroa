@@ -1,0 +1,88 @@
+.card-button {
+    background-color: rgb(255, 253, 122);
+    border: none;
+    border-radius: 1rem;
+    bottom: 0;
+    color: black;
+    cursor: pointer;
+    font-size: 1rem;
+    left: 50%;
+    opacity: 0;
+    padding: .5rem 1rem;
+    position: absolute;
+    text-align: center;
+    -ms-transform: translate(-50%, 125%);
+    -webkit-transform: translate(-50%, 125%);
+    transform: translate(-50%, 125%);
+    transition: 0.3s ease-out;
+    width: 70%;
+}
+
+.cardContainer {
+    -webkit-backdrop-filter: blur(11.4px);
+    align-items: center;
+    /* From https://css.glass */
+   /* From https://css.glass */
+background: rgba(219, 219, 219, 0.06);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(3px);;
+    border: 2px solid white;
+    border-radius: 20px;
+    box-shadow: -4px 4px 6px 0px rgba(0, 0, 0, 0.31);
+    display: flex;
+    flex-direction: column;
+    height: 180px;
+    justify-content: center;
+    margin: 30px;
+    overflow: visible;
+    padding: 1.8rem;
+    position: relative;
+    transition: 0.2s ease-out;
+    width: 150px;
+}
+
+.cardContainer:hover {
+    border-color: rgb(255, 253, 122);
+    box-shadow: -6px 6px 32px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -6px 6px 32px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -6px 6px 32px 0px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+    scale: 105%;
+}
+
+.cardContainer:hover .card-button {
+    -ms-transform: translate(-50%, 50%);
+    -webkit-transform: translate(-50%, 50%);
+    transform: translate(-50%, 50%);
+    opacity: 1;
+}
+
+.infoCard {
+    bottom: 15px;
+    position: relative;
+    width: 100%;
+}
+
+.pokeImg {
+    bottom: 15px;
+    position: relative;
+    transition: 0.2s ease-in-out;
+    z-index: 1;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover,
+a:visited {
+    color: inherit;
+}
+
+.types {
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    width: 100%;
+}
