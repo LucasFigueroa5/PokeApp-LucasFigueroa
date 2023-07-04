@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
     attack: {
       type: DataTypes.INTEGER,
     },
-    deffense: {
+    defense: {
       type: DataTypes.INTEGER,
     },
     speed: {
@@ -32,6 +32,11 @@ module.exports = (sequelize) => {
     },
     weight: {
       type: DataTypes.INTEGER,
+    },
+    createBD: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
     },
   },{
     timestamps: false,

@@ -1,23 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Landing.css";
 import { Link } from "react-router-dom";
-import pokeMusic from "../../utils/music/pokemon.mp3";
+import pokeMusic from "../../utils/music/jede.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeHigh, faVolumeXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Landing = () => {
-  const [isMuted, setIsMuted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
-  
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.volume = isMuted ? 0 : 0.5;
+      if (isPlaying) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
     }
-  }, [isMuted]);
+  }, [isPlaying]);
 
-  const toggleMute = () => {
-    setIsMuted(!isMuted);
+
+  const toggleSound = () => {
+    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -32,24 +36,23 @@ const Landing = () => {
           </div>
         </div>
         <div className="audio-controls">
-          <button
-          className="btnSound" onClick={toggleMute}>
-            {isMuted ? (
+          <button className="btnSound" onClick={toggleSound}>
+            {isPlaying ? (
               <FontAwesomeIcon
-                icon={faVolumeXmark}
-                style={{fontSize:'15px', color: "#e53a40" }}
+                icon={faVolumeHigh}
+                style={{ fontSize: "15px", color: "#e53a40" }}
               />
             ) : (
               <FontAwesomeIcon
-                icon={faVolumeHigh}
-                style={{fontSize:'15px', color: "#e53a40" }}
+                icon={faVolumeXmark}
+                style={{ fontSize: "15px", color: "#e53a40" }}
                 beat
               />
             )}
           </button>
         </div>
       </div>
-      <audio src={pokeMusic} autoPlay loop muted={isMuted} volume={0.2}/>
+      <audio ref={audioRef} src={pokeMusic} loop  />
     </div>
   );
 };

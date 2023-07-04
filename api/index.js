@@ -1,5 +1,5 @@
 const server = require('./src/app.js');
-const { conn, Pokemons, PokemonTypes } = require('./src/db.js');
+const { conn } = require('./src/db.js');
 const PORT = 3001;
 
 // Syncing all the models at once.

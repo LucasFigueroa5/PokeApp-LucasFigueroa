@@ -1,12 +1,12 @@
 import React from "react";
 import "./Navbar.css";
-import pokeball from "../../utils/images/pokeball.png";
+import logo from "../../utils/images/poke.png";
 import {Link} from 'react-router-dom'
 
 const Navbar = () => {
   return (
     <div className="navContainer">
-      <img src={pokeball} alt="pokeball" />
+      <img src={logo} alt="pokemon" />
       <div className="btnsContainer">
         <div className="navBtnsContainer">
           <Link to='/home'>

@@ -19,14 +19,13 @@
 }
 
 .cardContainer {
-    -webkit-backdrop-filter: blur(11.4px);
     align-items: center;
     /* From https://css.glass */
    /* From https://css.glass */
 background: rgba(219, 219, 219, 0.06);
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(3px);
--webkit-backdrop-filter: blur(3px);;
+-webkit-backdrop-filter: blur(3px);
     border: 2px solid white;
     border-radius: 20px;
     box-shadow: -4px 4px 6px 0px rgba(0, 0, 0, 0.31);
@@ -59,9 +58,10 @@ backdrop-filter: blur(3px);
 }
 
 .infoCard {
-    bottom: 15px;
-    position: relative;
-    width: 100%;
+  bottom: 15px;
+  position: relative;
+  width: 100%;/* Resta el doble del padding (1.8rem en cada lado) */
+
 }
 
 .pokeImg {

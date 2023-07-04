@@ -4,7 +4,7 @@ const { getPokemonById, getPokemonByIdFromDb } = require("../controllers/getPoke
 const getPokemonByIdHandler = async (req, res) => {
     try {
         const { id } = req.params;
-        if (id < 252 ) {
+        if (id < 1010 ) {
             const response = await getPokemonById(id);
             return res.status(200).send(response);
         } else {

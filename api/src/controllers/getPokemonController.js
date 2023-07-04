@@ -4,7 +4,7 @@ const { Pokemons, Type } = require('../db.js');
 
 const getApiPokemons = async () => {
     try {
-        const apiUrl = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=20');
+        const apiUrl = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=300');
         const allPokemons = apiUrl.data.results;
         const pokemonDetail = await Promise.all(
             allPokemons.map(async (pokemon) => {
@@ -35,22 +35,21 @@ const getDbPokemons = async () => {
         const pokemons = await Pokemons.findAll({
             include: {
                 model: Type,
-                as: 'types',
                 attributes: ['name'],
                 through: {
-                    attributes: [],
+                    attributes: []
                 }
             }
         });
        
-        const data = pokemons.map(pokemon => {
-            const pokeJson = pokemon.toJSON();
-            return {
-                ...pokeJson,
-                types: pokeJson.types.map(type => type.name)
-            }
-        });
-        return data;
+        // const data = pokemons.map(pokemon => {
+        //     const pokeJson = pokemon.toJSON();
+        //     return {
+        //         ...pokeJson,
+        //         types: pokeJson.types.map(type => type.name)
+        //     }
+        // });
+        return pokemons;
     } catch (error) {
         console.error(error);
         return [];

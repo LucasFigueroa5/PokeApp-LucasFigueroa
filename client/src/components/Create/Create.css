@@ -1,0 +1,32 @@
+.createContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background-color: #365DA3;
+    padding: 40px;
+    text-align: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.inputCreate {
+    width: 200px;
+    height: 30px;
+    border-radius: 40px;
+    border: none;
+}
+
+.inputCreate::placeholder {
+    margin-left: 10px;
+  }
+
+  .error {
+    color: red;
+  }

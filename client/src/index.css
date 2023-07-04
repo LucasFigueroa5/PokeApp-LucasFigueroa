@@ -1,8 +1,5 @@
 body {
   margin: 0;
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
-  /* background: linear-gradient(317deg, rgba(213, 213, 213, 1) 29%, rgba(255, 255, 255, 1) 82%); */
   background-image: url('./utils/images/white.jpg');
   background-repeat: no-repeat;
   height: auto;
@@ -17,3 +14,48 @@ body {
   font-family: 'Quicksand', sans-serif;
   ;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #E6F0FF; /* Azul claro */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #365DA3; /* Azul */
+}
+
+/* Firefox */
+::-moz-scrollbar {
+  width: 5px;
+}
+
+::-moz-scrollbar-track {
+  background-color: #E6F0FF; /* Azul claro */
+}
+
+::-moz-scrollbar-thumb {
+  background-color: #365DA3; /* Azul */
+}
+
+/* IE 10+ */
+::-ms-scrollbar {
+  width: 5px;
+}
+
+::-ms-scrollbar-track {
+  background-color: #E6F0FF; /* Azul claro */
+}
+
+::-ms-scrollbar-thumb {
+  background-color: #365DA3; /* Azul */
+}
+
+
+
+
+
+
+

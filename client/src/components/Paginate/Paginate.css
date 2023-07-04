@@ -1,0 +1,46 @@
+.paginationContainer {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+}
+
+.btnsBN {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 20px;
+    margin: 0 15px;
+    transition: all ease 0.3s;
+}
+
+.btnsBN:hover {
+    scale: 200%;
+    color: rgb(229, 58, 64);
+    cursor: pointer;
+}
+
+.btnBN {
+    border: none;
+    outline: none;
+    background: #365DA3;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: all ease 0.3s;
+    font-size:10px;
+}
+
+.btnBN:hover {
+    background: rgb(229, 58, 64);
+    border-radius: 50%;
+    scale: 200%;
+    cursor: pointer;
+    color: white;
+    box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.5);
+
+}
