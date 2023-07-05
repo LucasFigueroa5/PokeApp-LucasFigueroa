@@ -19,7 +19,12 @@ const Paginate = ({ allPokemons, paginate, pokemonsXPage, currentPage }) => {
       {pagesNumber &&
         pagesNumber.map((num) => (
           <div key={num}>
-            <button className="btnBN" onClick={() => paginate(num)}>{num}</button>
+            <button
+              className={`btnBN ${num === currentPage ? 'selectedPage' : ''}`}
+              onClick={() => paginate(num)}
+            >
+              {num}
+            </button>
           </div>
         ))}
       <button
@@ -27,7 +32,6 @@ const Paginate = ({ allPokemons, paginate, pokemonsXPage, currentPage }) => {
         onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
       >
         <FontAwesomeIcon icon={faCircleChevronRight} />
-        
       </button>
     </div>
   );

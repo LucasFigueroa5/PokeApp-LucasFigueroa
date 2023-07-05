@@ -1,4 +1,4 @@
-import { CREATE_POKEMON, FILTER_BY_API, FILTER_BY_DB, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_DETAIL, GET_TYPES, ORDER_BY_ATTACK, ORDER_BY_NAME } from "./action-types.js";
+import { CREATE_POKEMON, FILTER_BY_ORIGIN, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_DETAIL, GET_TYPES, ORDER_BY_ATTACK, ORDER_BY_NAME } from "./action-types.js";
 import axios from 'axios';
 
 
@@ -17,35 +17,7 @@ export const getAllPokemons = () => {
     }
 
 };
-// export const filterByAPI = () => {
-//     return async (dispatch) => {
-//       try {
-//         const getPokemons = await axios.get('http://localhost:3001/pokemons/local');
-//         const filteredPokemons = getPokemons.data; // Realiza el filtrado según tus necesidades
-//         return dispatch({
-//           type: FILTER_BY_API,
-//           payload: filteredPokemons,
-//         });
-//       } catch (error) {
-//         // Manejo de errores
-//       }
-//     };
-// };
 
-// export const filterByDB = (payload) => {
-//     return async (dispatch) => {
-//       try {
-//         const getPokemons = await axios.get('http://localhost:3001/pokemons/database');
-//         const filteredPokemons = getPokemons.data; // Realiza el filtrado o transformación según tus necesidades
-//         return dispatch({
-//           type: FILTER_BY_DB,
-//           payload: filteredPokemons,
-//         });
-//       } catch (error) {
-//         // Manejo de errores
-//       }
-//     };
-// };
 
 export const getPokemonDetail = (id) => {
     return async (dispatch) => {
@@ -115,6 +87,15 @@ export const filterByType = (pokemonType) => {
         payload: pokemonType
     }
 };
+
+export const filterByOrigin = (payload) => {
+    return {
+        type: FILTER_BY_ORIGIN,
+        payload
+    }
+};
+
+
 
 
 export const orderByName = (payload) => {

@@ -1,12 +1,10 @@
-import { CREATE_POKEMON, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_DETAIL, GET_TYPES, ORDER_BY_ATTACK, ORDER_BY_NAME } from "./action-types";
+import { CREATE_POKEMON, FILTER_BY_ORIGIN, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_DETAIL, GET_TYPES, ORDER_BY_ATTACK, ORDER_BY_NAME } from "./action-types";
 
 
 const initialState = {
     pokemons: [],
     pokemonsCopy: [],
-    pokemonsAPI: [],
-    pokemonsDB: [],
-    pokemonDetail: {},
+    pokemonDetail: [],
     types: [],
     pokemonsCreated: [],
 }
@@ -31,11 +29,11 @@ const reducer = (state = initialState, action) => {
                 pokemons: pokeCopy.filter((pokemon) => pokemon.name === action.payload.name)
             };
         case CREATE_POKEMON:
-                return {
-                    ...state,
-                    pokemonsCreated: action.payload
-                }
-            
+            return {
+                ...state,
+                pokemonsCreated: action.payload
+            }
+
         case GET_TYPES:
             return {
                 ...state,
@@ -50,15 +48,25 @@ const reducer = (state = initialState, action) => {
             } else {
                 return {
                     ...state,
-                    pokemons: [...state.pokemonsCopy].filter(pokemon => pokemon.types && pokemon.types.includes(action.payload))
+                    pokemons: [...state.pokemonsCopy].filter(pokemon => {
+                        if (pokemon.createBD) {
+                            console.log(pokemon)
+                            return pokemon.Types && pokemon.Types.map(p => p.name).includes(action.payload)
+                        } else {
+                            
+                            return pokemon.types && pokemon.types.includes(action.payload)
+                        }
+                    })
                 };
             };
-        // case FILTER_BY_API:
-        //     return {
-        //     }
-        // case FILTER_BY_DB:
-        //     return {
-        //     };
+            case FILTER_BY_ORIGIN:
+                const allPokemons = state.pokemonsCopy;
+                const origin = action.payload === 'pokemonsDB' ? allPokemons.filter( p => p.createBD ) : allPokemons.filter( p => !p.createBD)
+                return {
+                   ...state,
+                   pokemons: action.payload === 'all' ? allPokemons : origin
+                }
+
         case ORDER_BY_NAME:
             if (action.payload === 'A-Z') {
                 return {
@@ -72,6 +80,7 @@ const reducer = (state = initialState, action) => {
                     pokemons: [...state.pokemons].sort((a, b) => b.name.localeCompare(a.name))
                 }
             };
+            break
         case ORDER_BY_ATTACK:
             if (action.payload === 'lowestAttack') {
                 return {
@@ -85,6 +94,7 @@ const reducer = (state = initialState, action) => {
                     pokemons: [...state.pokemons].sort((a, b) => b.attack - a.attack)
                 }
             };
+            break
         default:
             return state;
     }

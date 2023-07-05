@@ -42,6 +42,7 @@ const Home = () => {
       allPokemons={allPokemons.length}
       pokemonsXPage={pokemonsXPage}
       currentPage={currentPage} />
+      <div className='altura'></div>
     </div>
   )
 }

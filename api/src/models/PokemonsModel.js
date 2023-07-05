@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
   sequelize.define('Pokemons', {
     id: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: DataTypes.UUIDV1,
       primaryKey: true,
     },
     name: {
@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true,
     },
-    image_url: {
+    imgUrl: {
       type: DataTypes.TEXT,
     },
     hp: {
@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
     },
     height: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.INTEGER,
     },
     weight: {
       type: DataTypes.INTEGER,

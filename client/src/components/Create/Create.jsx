@@ -10,18 +10,16 @@ const Create = () => {
   const [error, setError] = useState({});
 
   const [form, setForm] = useState({
-    name: "",
-    hp: 0,
-    attack: 0,
-    defense: 0,
-    speed: 0,
-    height: 0,
-    weight: 0,
-    image_url: "",
-    types: ["", ""],
-    createDB: true,
+    "name": "",
+    "hp": '',
+    "attack": '',
+    "defense": '',
+    "speed": '',
+    "height": '',
+    "weight": '',
+    "imgUrl": "",
+    "types": [],
   });
-
   // VALIDACION--------------------------------
 
   const validation = (form) => {
@@ -34,8 +32,8 @@ const Create = () => {
       errors.name = "*Name must have 3 or more letters";
 
     if (!form.hp) errors.hp = "*Please enter a valid number between 1 and 400";
-    if (form.hp && Number(form.hp) === form.hp)
-      errors.hp = "*Numbers allowed only";
+    // if (form.hp)
+    //   errors.hp = "*Numbers allowed only";
     if (!form.attack)
       errors.attack = "**Please enter a valid number between 1 and 350";
     if (!form.defense)
@@ -76,16 +74,22 @@ const Create = () => {
   };
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+
     setError(
       validation({
         ...form,
         [e.target.name]: e.target.value,
       })
     );
+    let toNum = e.target.value
+    if (!isNaN(e.target.value)) {
+      toNum = Number(e.target.value) 
+    }
+    setForm({
+         ...form,
+         [e.target.name]: toNum,
+      })
+
   };
 
   const handleSubmit = (e) => {
@@ -185,9 +189,9 @@ const Create = () => {
           <label>image: </label>
           <input
             className="inputCreate"
-            type="url"
-            name="image"
-            value={form.image_url}
+            type="text"
+            name="imgUrl"
+            value={form.imgUrl}
             onChange={handleChange}
           ></input>
           <label>types:</label>
@@ -215,7 +219,7 @@ const Create = () => {
               );
             })}
           </div>
-          <button type="submit" className="createpoke-button">
+          <button onClick={handleSubmit} type="submit" className="createpoke-button">
             Create Pokemon
           </button>
         </form>

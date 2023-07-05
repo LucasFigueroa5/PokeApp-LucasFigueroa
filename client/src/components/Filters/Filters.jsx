@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterByType, getTypes, orderByAttack, orderByName } from "../../redux/actions";
+import { filterByOrigin, filterByType, getTypes, orderByAttack, orderByName } from "../../redux/actions";
 import "./Filters.css";
 
 const Filters = () => {
@@ -11,6 +11,10 @@ const Filters = () => {
     const { value } = e.target;
     dispatch(filterByType(value));
   };
+
+  const handlerOrderByOrigin = (e) => {
+    dispatch(filterByOrigin(e.target.value));
+  }
 
   const handleOrderByName = (e) => {
     dispatch(orderByName(e.target.value));
@@ -42,6 +46,7 @@ const Filters = () => {
         <select
           className="selectOp"
           name="filterByOrigin"
+          onChange={handlerOrderByOrigin}
         >
           <option value="all">All Pokemons</option>
           <option value="pokemonsApi">Originals Pokemons</option>

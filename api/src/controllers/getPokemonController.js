@@ -14,7 +14,7 @@ const getApiPokemons = async () => {
                     id,
                     name,
                     types: types.map((type) => type.type.name),
-                    img: sprites.other.home.front_default,
+                    imgUrl: sprites.other.home.front_default,
                     hp: stats.find((stat) => stat.stat.name === 'hp')?.base_stat,
                     attack: stats.find((stat) => stat.stat.name === 'attack')?.base_stat,
                     defense: stats.find((stat) => stat.stat.name === 'defense')?.base_stat,

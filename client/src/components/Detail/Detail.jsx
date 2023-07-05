@@ -10,6 +10,7 @@ const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const detail = useSelector((state) => state.pokemonDetail);
+  
   const typesArray = Array.isArray(detail.types) ? detail.types : [];
 
   function capitalize(str) {
@@ -19,18 +20,20 @@ const Detail = () => {
     return '';
   }
 
-
   useEffect(() => {
+
     dispatch(getPokemonDetail(id));
+
   }, [dispatch, id]);
 
   return (
+    
     <div className="detailContainer">
       <div className="detailLeft">
         <Link to='/home'>
           <FontAwesomeIcon className="backBtn" icon={faCircleArrowLeft} />
         </Link>
-        <img className="imagePokemon" src={detail.imgUrl} alt={detail.name} width="430px" />
+        <img className="imagePokemon" src={detail.imgUrl || detail.imgUrl} alt={detail.name} width="430px" />
       </div>
       <div className="detailRight">
         <div className="detailHeader">
