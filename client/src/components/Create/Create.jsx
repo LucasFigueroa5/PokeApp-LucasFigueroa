@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { createPokemon, getTypes } from "../../redux/actions.js";
 import { Link } from "react-router-dom";
 import "./Create.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Create = () => {
   const dispatch = useDispatch();
@@ -10,17 +12,16 @@ const Create = () => {
   const [error, setError] = useState({});
 
   const [form, setForm] = useState({
-    "name": "",
-    "hp": '',
-    "attack": '',
-    "defense": '',
-    "speed": '',
-    "height": '',
-    "weight": '',
-    "imgUrl": "",
-    "types": [],
+    name: "",
+    hp: "",
+    attack: "",
+    defense: "",
+    speed: "",
+    height: "",
+    weight: "",
+    imgUrl: "",
+    types: [],
   });
-  // VALIDACION--------------------------------
 
   const validation = (form) => {
     const errors = {};
@@ -35,7 +36,7 @@ const Create = () => {
     // if (form.hp)
     //   errors.hp = "*Numbers allowed only";
     if (!form.attack)
-      errors.attack = "**Please enter a valid number between 1 and 350";
+      errors.attack = "*Please enter a valid number between 1 and 350";
     if (!form.defense)
       errors.defense = "*Please enter a valid number between 1 and 400";
     if (!form.speed)
@@ -47,8 +48,6 @@ const Create = () => {
 
     return errors;
   };
-
-  // VALIDACION---------------------------
 
   useEffect(() => {
     dispatch(getTypes());
@@ -74,22 +73,20 @@ const Create = () => {
   };
 
   const handleChange = (e) => {
-
     setError(
       validation({
         ...form,
         [e.target.name]: e.target.value,
       })
     );
-    let toNum = e.target.value
+    let toNum = e.target.value;
     if (!isNaN(e.target.value)) {
-      toNum = Number(e.target.value) 
+      toNum = Number(e.target.value);
     }
     setForm({
-         ...form,
-         [e.target.name]: toNum,
-      })
-
+      ...form,
+      [e.target.name]: toNum,
+    });
   };
 
   const handleSubmit = (e) => {
@@ -104,11 +101,9 @@ const Create = () => {
 
   return (
     <div className="createContainer">
-      <section className="create-section">
+      <div className="createSection">
         <Link to="/home">
-          <div className="back-home-cont">
-            <button className="back-home-butt">Back Home</button>
-          </div>
+          <FontAwesomeIcon className="backBtnCreate" icon={faCircleArrowLeft} />
         </Link>
         <form className="formContainer" onSubmit={handleSubmit}>
           <label>Name: </label>
@@ -131,7 +126,7 @@ const Create = () => {
             onChange={handleChange}
           ></input>
           {error.hp && <span className="error">{error.hp}</span>}
-          <label>attack: </label>
+          <label>Attack: </label>
           <input
             className="inputCreate"
             type="number"
@@ -142,7 +137,7 @@ const Create = () => {
             onChange={handleChange}
           ></input>
           {error.attack && <span className="error">{error.attack}</span>}
-          <label>defense: </label>
+          <label>Defense: </label>
           <input
             className="inputCreate"
             type="number"
@@ -153,7 +148,7 @@ const Create = () => {
             onChange={handleChange}
           ></input>
           {error.defense && <span className="error">{error.defense}</span>}
-          <label>speed: </label>
+          <label>Speed: </label>
           <input
             className="inputCreate"
             type="number"
@@ -164,7 +159,7 @@ const Create = () => {
             onChange={handleChange}
           ></input>
           {error.speed && <span className="error">{error.speed}</span>}
-          <label>height: </label>
+          <label>Height: </label>
           <input
             className="inputCreate"
             type="number"
@@ -175,7 +170,7 @@ const Create = () => {
             onChange={handleChange}
           ></input>
           {error.height && <span className="error">{error.height}</span>}
-          <label>weight: </label>
+          <label>Weight: </label>
           <input
             className="inputCreate"
             type="number"
@@ -186,7 +181,7 @@ const Create = () => {
             onChange={handleChange}
           ></input>
           {error.weight && <span className="error">{error.weight}</span>}
-          <label>image: </label>
+          <label>Image: </label>
           <input
             className="inputCreate"
             type="text"
@@ -194,23 +189,29 @@ const Create = () => {
             value={form.imgUrl}
             onChange={handleChange}
           ></input>
-          <label>types:</label>
-          <select className="select-button" name="type" onChange={handleSelect}>
-            {types.map((type) => {
-              return (
-                <option key={type.id} value={type.name}>
-                  {type.name}
-                </option>
-              );
-            })}
-          </select>
+          <div className="typesContainerCreate">
+            <label>Types:</label>
+            <select
+              className="select-button"
+              name="type"
+              onChange={handleSelect}
+            >
+              {types.map((type) => {
+                return (
+                  <option key={type.id} value={type.name}>
+                    {type.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
           <div className="selected">
             {form.types?.map((type) => {
               return (
-                <span key={type} className="delete-type-cont">
+                <span className="typeSpan" key={type}>
                   {type}
                   <button
-                    className="delete-type-button"
+                    className="deleteBtn"
                     onClick={() => handleDelete(type)}
                   >
                     x
@@ -219,11 +220,15 @@ const Create = () => {
               );
             })}
           </div>
-          <button onClick={handleSubmit} type="submit" className="createpoke-button">
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="createPokeBtn"
+          >
             Create Pokemon
           </button>
         </form>
-      </section>
+      </div>
     </div>
   );
 };

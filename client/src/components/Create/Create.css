@@ -1,32 +1,114 @@
 .createContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 100%;
+   margin-bottom: 40px;
 }
 
 .formContainer {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    background-color: #365DA3;
-    padding: 40px;
-    text-align: center;
-    align-items: center;
-    border-radius: 20px;
+   display: flex;
+   flex-direction: column;
+   width: 300px;
+   background-color: #365DA3;
+   padding: 40px;
+   text-align: center;
+   align-items: center;
+   border-radius: 20px;
 }
 
 .inputCreate {
-    width: 200px;
-    height: 30px;
-    border-radius: 40px;
-    border: none;
+   width: 200px;
+   height: 30px;
+   border-radius: 40px;
+   border: none;
+   margin: 5px;
 }
 
 .inputCreate::placeholder {
-    margin-left: 10px;
-  }
+   margin-left: 10px;
+}
 
-  .error {
-    color: red;
-  }
+.error {
+   color: red;
+}
+
+.typesContainerCreate {
+   display: flex;
+   width: 60px;
+   justify-content: center;
+   gap: 10px;
+}
+
+.backBtnCreate {
+   border: none;
+   color: rgb(255, 253, 122);
+   display: flex;
+   z-index: 100;
+   outline: none;
+   background: #365DA3;
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   box-shadow: 4px 4px 8px 1px rgba(0, 0, 0, 0.38);
+   -webkit-box-shadow: 4px 4px 8px 1px rgba(0, 0, 0, 0.38);
+   -moz-box-shadow: 4px 4px 8px 1px rgba(0, 0, 0, 0.38);
+   font-weight: bolder;
+   transition: all ease 0.2s;
+   position: relative;
+   top: 60px;
+   left: 20px;
+}
+
+.backBtnCreate:hover {
+   cursor: pointer;
+   background: rgb(255, 253, 122);
+   color: rgb(229, 58, 64);
+
+}
+
+.backBtnCreate:active {
+   top: 65px
+}
+
+.selected {
+   margin-bottom: 30px;
+}
+
+.deleteBtn {
+   background: none;
+   outline: none;
+   border: none;
+   color: rgb(255, 253, 122);
+   margin-left: 5px;
+}
+
+
+.deleteBtn:hover {
+   cursor: pointer;
+}
+
+.typeSpan {
+   background-color: #233e70;
+   color: white;
+   padding: 6px 10px;
+   position: relative;
+   top: 13px;
+   margin-right: 10px;
+   border-radius: 40px;
+}
+
+.createPokeBtn {
+   background-color: rgb(255, 253, 122);
+   border: none;
+   outline: none;
+   padding: 5px;
+   border-radius: 40px;
+   transition: all ease 0.2s;
+}
+
+.createPokeBtn:hover {
+   cursor: pointer;
+   scale: 120%;
+   color: rgb(229, 58, 64);
+}

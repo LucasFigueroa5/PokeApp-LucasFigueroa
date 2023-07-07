@@ -4,10 +4,10 @@ const { Pokemons, Type } = require('../db.js');
 
 const getApiPokemons = async () => {
     try {
-        const apiUrl = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=300');
+        const apiUrl = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100');
         const allPokemons = apiUrl.data.results;
-        const pokemonDetail = await Promise.all(
-            allPokemons.map(async (pokemon) => {
+        const pokemonDetail = await Promise.all( // espera q se cumplan muchas promesas ya que es una iteracion asincrona por ej para un mapeo asincrono
+            allPokemons.map(async (pokemon) => { // sin esto tendria como res, un array de promesas pendientes.
                 const { data } = await axios.get(pokemon.url);
                 const { id, name, types, sprites, stats, height, weight } = data;
                 return {
@@ -42,13 +42,6 @@ const getDbPokemons = async () => {
             }
         });
        
-        // const data = pokemons.map(pokemon => {
-        //     const pokeJson = pokemon.toJSON();
-        //     return {
-        //         ...pokeJson,
-        //         types: pokeJson.types.map(type => type.name)
-        //     }
-        // });
         return pokemons;
     } catch (error) {
         console.error(error);
@@ -59,7 +52,7 @@ const getDbPokemons = async () => {
 const getAllPokemons = async () => {
     const apiPokemons = await getApiPokemons();
     const dbPokemons = await getDbPokemons();
-    const allPokemons = [...apiPokemons, ...dbPokemons]; 
+    const allPokemons = [...apiPokemons, ...dbPokemons];
 
     return allPokemons;
 }

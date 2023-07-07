@@ -23,7 +23,7 @@ const createPokemon = async ({ name, hp, attack, defense, speed, height, weight,
                 name: types
             }
         })
-        const myPokemon = await newPokemon.addTypes(myType);
+        await newPokemon.addTypes(myType);
 
         const pokeRelation = await Pokemons.findOne({
             where: {

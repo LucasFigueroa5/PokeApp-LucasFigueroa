@@ -7,6 +7,9 @@
     position: relative;
     margin: 20px 0 40px;
     width: 190px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
   }
   
   .searchBar input {
@@ -46,4 +49,14 @@
     color: rgb(229, 58, 64);
     transform: translateY(-25px);
     font-weight: bold;
+  }
+
+  .lupa {
+    color: rgb(229, 58, 64);
+    transition: all ease 0.2s;
+  }
+
+  .lupa:hover {
+    scale: 140%;
+    cursor: pointer;
   }

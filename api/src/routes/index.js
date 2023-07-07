@@ -13,7 +13,7 @@ const router = Router();
 router.get('/types', getTypesHandler)
 router.get('/pokemons', getPokemons)
 router.get('/pokemons/name', getPokemonNameHandler)
-router.get('/pokemons/:id',getPokemonByIdHandler);
+router.get('/pokemons/:id',getPokemonByIdHandler)
 router.post('/pokemons', handlerCreate)
 
 

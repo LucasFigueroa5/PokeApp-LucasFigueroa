@@ -1,4 +1,4 @@
-import { CREATE_POKEMON, FILTER_BY_ORIGIN, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_DETAIL, GET_TYPES, ORDER_BY_ATTACK, ORDER_BY_NAME } from "./action-types.js";
+import { CREATE_POKEMON, FILTER_BY_ORIGIN, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_DETAIL, GET_TYPES, ORDER_BY_ATTACK, ORDER_BY_NAME, SET_PAGE } from "./action-types.js";
 import axios from 'axios';
 
 
@@ -6,10 +6,10 @@ import axios from 'axios';
 export const getAllPokemons = () => {
     return async (dispatch) => {
         try {
-            const allPokemons = await axios.get('http://localhost:3001/pokemons');
+            const allPokemons = await axios.get('http://localhost:3001/pokemons'); // traigo los pokemons de mi servidor (API)
             return dispatch({
-                type: GET_ALL_POKEMONS,
-                payload: allPokemons.data
+                type: GET_ALL_POKEMONS,  // Declaro cual accion es
+                payload: allPokemons.data  // el dato que le pasamos al Store para actualizar mi estado
             })
 
         } catch (error) {
@@ -22,10 +22,10 @@ export const getAllPokemons = () => {
 export const getPokemonDetail = (id) => {
     return async (dispatch) => {
         try {
-            const details = await axios.get(`http://localhost:3001/pokemons/${id}`);
+            const pokemons = await axios.get(`http://localhost:3001/pokemons/${id}`);
             return dispatch({
                 type: GET_POKEMON_DETAIL,
-                payload: details.data
+                payload: pokemons.data
             });
         } catch (error) {
 
@@ -34,18 +34,13 @@ export const getPokemonDetail = (id) => {
 
 };
 
-export const getPokemonByName = (name) => {
+export const getPokemonByName = (name) => {  
     return async (dispatch) => {
         try {
-            const pokemonName = await axios.get(`http://localhost:3001/pokemons/name?name=${name}`);
-            if (pokemonName.data) {
                 return dispatch({
                     type: GET_POKEMON_BY_NAME,
-                    payload: pokemonName.data,
+                    payload: name,
                 });
-            } else {
-                alert(`There is no Pokémon with this name "${name}"`);
-            }
         } catch (error) {
         }
     };
@@ -65,6 +60,8 @@ export const createPokemon = (form) => {
         }
     };
 };
+
+
 
 export const getTypes = () => {
     return async dispatch => {
@@ -110,3 +107,10 @@ export const orderByAttack = (payload) => {
         payload
     })
 };
+
+export const setPage = (page) => {
+    return {
+      type: SET_PAGE,
+      payload: page
+    };
+  };

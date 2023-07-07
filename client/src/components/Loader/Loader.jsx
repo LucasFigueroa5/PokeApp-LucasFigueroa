@@ -1,17 +1,18 @@
 import React from "react";
-import './Loader.css';
-import loader from '../../utils/images/pokeball.png'
+import "./Loader.css";
 
 
 const Loader = () => {
-    
-    return (
-        <div className="loader-cont">
-            <div className="loader">
-            <img src={loader} alt="loading..."/>
-            </div>
-        </div>
-        )
+  return (
+    <div className="wrapper">
+    <div className="circle"></div>
+    <div className="circle"></div>
+    <div className="circle"></div>
+    <div className="shadow"></div>
+    <div className="shadow"></div>
+    <div className="shadow"></div>
+</div>
+  );
 };
 
 export default Loader;

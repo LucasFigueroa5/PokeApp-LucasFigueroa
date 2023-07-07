@@ -8,12 +8,12 @@ module.exports = (sequelize) => {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV1,
       allowNull: false,
-      primaryKey: true,
+      primaryKey: true, // me devuelve un id unico
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+      allowNull: false, // no se permite que el campo este en estado null
+      unique: true, // el valor de la propiedad name, no se puede repetir
     },
   }, {
     timestamps: false,

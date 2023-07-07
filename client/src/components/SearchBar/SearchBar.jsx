@@ -3,26 +3,38 @@ import { useDispatch } from "react-redux";
 import "./SearchBar.css";
 import { getPokemonByName } from "../../redux/actions.js";
 import Filters from "../Filters/Filters";
-// import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 
 const SearchBar = () => {
+
   const dispatch = useDispatch();
+  
   const [input, setInput] = useState("");
 
   const handleChange = (e) => {
+
     setInput(e.target.value);
+
+    dispatch(getPokemonByName(e.target.value));
+
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
+
+    e.preventDefault();
 
     if (!input) {
+
       return alert("Insert a valid Pokemon name");
+
     }
 
     dispatch(getPokemonByName(input));
+
     setInput("");
+    
   };
 
   return (
@@ -39,9 +51,11 @@ const SearchBar = () => {
             <span style={{ transitionDelay: "250ms" }}>o</span>
             <span style={{ transitionDelay: "300ms" }}>n</span>
           </label>
+          
         </form>
+        <FontAwesomeIcon className="lupa" onClick={handleSubmit} icon={faMagnifyingGlass} />
       </div>
-     < Filters />
+      <Filters />
     </div>
   );
 };
