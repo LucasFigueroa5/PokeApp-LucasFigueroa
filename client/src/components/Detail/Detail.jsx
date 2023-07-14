@@ -23,7 +23,7 @@ const Detail = () => {
   useEffect(() => {
 
     dispatch(getPokemonDetail(id));
-
+    // return () => {}
   }, [dispatch, id]);
 
   return (

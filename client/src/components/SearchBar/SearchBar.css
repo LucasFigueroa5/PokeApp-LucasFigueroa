@@ -26,7 +26,7 @@
   .searchBar input:focus,
   .searchBar input:valid {
     outline: 0;
-    border-bottom-color: rgb(229, 58, 64);
+    border-bottom-color: #365DA3;
   }
   
   .searchBar label {
@@ -46,13 +46,13 @@
   
   .searchBar input:focus+label span,
   .searchBar input:valid+label span {
-    color: rgb(229, 58, 64);
+    color: #365DA3;
     transform: translateY(-25px);
     font-weight: bold;
   }
 
   .lupa {
-    color: rgb(229, 58, 64);
+    color: #365DA3;
     transition: all ease 0.2s;
   }
 

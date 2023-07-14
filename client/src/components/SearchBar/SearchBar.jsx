@@ -9,6 +9,8 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SearchBar = () => {
 
+
+
   const dispatch = useDispatch();
   
   const [input, setInput] = useState("");

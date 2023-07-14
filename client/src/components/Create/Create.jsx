@@ -21,20 +21,22 @@ const Create = () => {
     weight: "",
     imgUrl: "",
     types: [],
+
   });
 
   const validation = (form) => {
+
     const errors = {};
+
     if (!form.name) errors.name = "*Name is required";
-    if (/[[/*+$#!%&()=?¿\]{}/\-.,:@_<>]/.test(form.name)) {
-      errors.name = "*No se permiten signos";
+    if (!/^[a-zA-Z]+$/.test(form.name)) {
+      errors.name = "*Only letters are allowed";
     }
     if (form.name && form.name.length > 0 && form.name.length < 3)
       errors.name = "*Name must have 3 or more letters";
 
     if (!form.hp) errors.hp = "*Please enter a valid number between 1 and 400";
-    // if (form.hp)
-    //   errors.hp = "*Numbers allowed only";
+
     if (!form.attack)
       errors.attack = "*Please enter a valid number between 1 and 350";
     if (!form.defense)
@@ -45,6 +47,9 @@ const Create = () => {
       errors.height = "*Please enter a valid number between 1 and 150";
     if (!form.weight)
       errors.weight = "*Please enter a valid number between 1 and 300";
+      if (!form.imgUrl) {
+        errors.imgUrl = "*Image is required";
+      }
 
     return errors;
   };
@@ -79,10 +84,14 @@ const Create = () => {
         [e.target.name]: e.target.value,
       })
     );
+  
     let toNum = e.target.value;
-    if (!isNaN(e.target.value)) {
-      toNum = Number(e.target.value);
+    if (e.target.value !== "") {
+      if (!isNaN(e.target.value)) {
+        toNum = Number(e.target.value);
+      }
     }
+  
     setForm({
       ...form,
       [e.target.name]: toNum,

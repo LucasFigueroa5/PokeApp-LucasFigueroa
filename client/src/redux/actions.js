@@ -1,10 +1,10 @@
-import { CREATE_POKEMON, FILTER_BY_ORIGIN, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_DETAIL, GET_TYPES, ORDER_BY_ATTACK, ORDER_BY_NAME, SET_PAGE } from "./action-types.js";
+import { CREATE_POKEMON, FILTER_BY_ORIGIN, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_DETAIL, GET_TYPES, ORDER_BY_ATTACK, ORDER_BY_NAME, SET_PAGE} from "./action-types.js";
 import axios from 'axios';
 
 
 
 export const getAllPokemons = () => {
-    return async (dispatch) => {
+    return async (dispatch) => {  
         try {
             const allPokemons = await axios.get('http://localhost:3001/pokemons'); // traigo los pokemons de mi servidor (API)
             return dispatch({
@@ -28,24 +28,19 @@ export const getPokemonDetail = (id) => {
                 payload: pokemons.data
             });
         } catch (error) {
-
         }
     };
 
 };
 
-export const getPokemonByName = (name) => {  
-    return async (dispatch) => {
-        try {
-                return dispatch({
-                    type: GET_POKEMON_BY_NAME,
-                    payload: name,
-                });
-        } catch (error) {
-        }
-    };
+export const getPokemonByName = (name) => {
+    return {
+        type: GET_POKEMON_BY_NAME,
+        payload: name,
+    }
 
 };
+
 
 export const createPokemon = (form) => {
     return async dispatch => {
@@ -110,7 +105,7 @@ export const orderByAttack = (payload) => {
 
 export const setPage = (page) => {
     return {
-      type: SET_PAGE,
-      payload: page
+        type: SET_PAGE,
+        payload: page
     };
-  };
+};

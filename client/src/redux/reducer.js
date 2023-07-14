@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 pokemons: action.payload,
                 pokemonsCopy: action.payload,
-                pokemonDetail:[],
+                pokemonDetail: [],
                 loader: true,
             };
 
@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 pokemonDetail: action.payload,
-                loader: true,
+                
             };
 
         case GET_POKEMON_BY_NAME:
@@ -135,6 +135,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 currentPage: action.payload
             };
+
         default:
             return state;
     }

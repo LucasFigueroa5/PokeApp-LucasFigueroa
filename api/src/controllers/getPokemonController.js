@@ -4,7 +4,7 @@ const { Pokemons, Type } = require('../db.js');
 
 const getApiPokemons = async () => {
     try {
-        const apiUrl = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100');
+        const apiUrl = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=200');
         const allPokemons = apiUrl.data.results;
         const pokemonDetail = await Promise.all( // espera q se cumplan muchas promesas ya que es una iteracion asincrona por ej para un mapeo asincrono
             allPokemons.map(async (pokemon) => { // sin esto tendria como res, un array de promesas pendientes.
