@@ -6,7 +6,7 @@ import axios from 'axios';
 export const getAllPokemons = () => {
     return async (dispatch) => {  
         try {
-            const allPokemons = await axios.get('http://localhost:3001/pokemons'); // traigo los pokemons de mi servidor (API)
+            const allPokemons = await axios.get('pokemons'); // traigo los pokemons de mi servidor (API)
             return dispatch({
                 type: GET_ALL_POKEMONS,  // Declaro cual accion es
                 payload: allPokemons.data  // el dato que le pasamos al Store para actualizar mi estado
@@ -22,7 +22,7 @@ export const getAllPokemons = () => {
 export const getPokemonDetail = (id) => {
     return async (dispatch) => {
         try {
-            const pokemons = await axios.get(`http://localhost:3001/pokemons/${id}`);
+            const pokemons = await axios.get(`pokemons/${id}`);
             return dispatch({
                 type: GET_POKEMON_DETAIL,
                 payload: pokemons.data
@@ -45,7 +45,7 @@ export const getPokemonByName = (name) => {
 export const createPokemon = (form) => {
     return async dispatch => {
         try {
-            const data = await axios.post('http://localhost:3001/pokemons', form);
+            const data = await axios.post('pokemons', form);
             return dispatch({
                 type: CREATE_POKEMON,
                 payload: data.data
@@ -61,7 +61,7 @@ export const createPokemon = (form) => {
 export const getTypes = () => {
     return async dispatch => {
         try {
-            const getType = await axios.get('http://localhost:3001/types');
+            const getType = await axios.get('types');
             return dispatch({
                 type: GET_TYPES,
                 payload: getType.data

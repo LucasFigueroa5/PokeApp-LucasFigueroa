@@ -5,7 +5,8 @@ import Landing from './components/Landing/Landing';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Detail from './components/Detail/Detail';
-
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:3001/'
 
 
 function App() {
